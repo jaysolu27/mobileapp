@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GetdataService } from '../getdata.service';
-
+import {Vibration} from "@ionic-native/vibration/ngx";
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -9,8 +9,10 @@ import { GetdataService } from '../getdata.service';
 export class Tab1Page {
   data: any;
   constructor(
-   public getdata: GetdataService
-  ) {}
+   public getdata: GetdataService,
+   private v:Vibration
+  )
+   {}
 
   ngOnInit(){
     this.getdata.doGet().subscribe(res=>{
@@ -18,4 +20,10 @@ export class Tab1Page {
       console.log(this.data)
     })
   }
+
+  vibrate()
+  {
+    this.v.vibrate(5000);
+  }
+  
 }

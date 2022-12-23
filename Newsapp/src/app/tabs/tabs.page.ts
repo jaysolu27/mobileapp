@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {Vibration} from "@ionic-native/vibration/ngx";
 
 @Component({
   selector: 'app-tabs',
@@ -8,9 +8,12 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {
+  constructor(private v:Vibration) {
 
   }
+  vibrate()
+  {
+    this.v.vibrate(5000);
+  }
   
-
 }
